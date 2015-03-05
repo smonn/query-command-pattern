@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - School</title>
+    <link rel="stylesheet" href="~/Content/Site.min.css">
+</head>
+<body>
+    <header>
+        <h1>School</h1>
+    </header>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")">Courses</a></li>
+            <li><a href="@Url.Action("Students", "Home")">Students</a></li>
+        </ul>
+    </nav>
+    <main>
+        @RenderBody()
+    </main>
+</body>
+</html>

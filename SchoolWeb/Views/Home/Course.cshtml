@@ -1,0 +1,54 @@
+﻿@model SampleEntityFramework.DomainModels.Courses.CourseDetailsModel
+
+@{
+    ViewBag.Title = "Course - " + Model.Title + " [" + Model.CourseId + "]";
+    var pageCount = (int)Math.Ceiling(
+        Model.TotalStudents / (float)Model.PageSize);
+}
+
+<h2>Course <small>@Model.Title [@Model.CourseId]</small></h2>
+<p>Credits: @Model.Credits</p>
+
+<section>
+    <header>
+        <h3>Students</h3></header>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Grade</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Student", new {Id = student.StudentId})">@student.LastName, @student.FirstName</a> [@student.StudentId]
+                </td>
+                <td>@student.Grade</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    @if (pageCount > 1)
+    {
+        <nav class="pagination">
+            <ul>
+                @for (var i = 1; i <= pageCount; i += 1)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li class="active"><span>@i</span></li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink(i.ToString(), "Course", new {pageSize = Model.PageSize, page = i})</li>
+                    }
+                }
+            </ul>
+        </nav>
+    }
+</section>
