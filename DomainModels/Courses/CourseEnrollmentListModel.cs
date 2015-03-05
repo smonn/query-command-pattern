@@ -2,11 +2,8 @@
 
 namespace SampleEntityFramework.DomainModels.Courses
 {
-    public class CourseEnrollmentListModel
+    public class CourseEnrollmentListModel : CourseListModel
     {
-        public int CourseId { get; set; }
-        public string Title { get; set; }
-        public int Credits { get; set; }
         public EnrollmentGrade Grade { get; set; }
     }
 }

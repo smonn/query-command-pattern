@@ -1,5 +1,6 @@
 ﻿namespace SampleEntityFramework.PersistenceModels
 {
+    // todo turn into proper enumeration class
     public enum EnrollmentGrade
     {
         X, F, D, C, B, A,

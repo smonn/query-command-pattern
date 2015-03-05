@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using SampleEntityFramework.DomainModels.Common;
 using SampleEntityFramework.DomainModels.Courses;
 using SampleEntityFramework.DomainModels.Students;
 using SampleEntityFramework.PersistenceModels;
@@ -7,10 +8,6 @@ namespace SampleEntityFramework.DataAccess.Queries.Students
 {
     public class StudentDetailsQuery : IQuery<StudentDetailsModel>
     {
-        public const int DefaultPageSize = 2;
-        private const int MinPageSize = 1;
-        private const int MaxPageSize = 100;
-
         public int Id { get; set; }
 
         public int? Page { get; set; }
@@ -35,21 +32,10 @@ namespace SampleEntityFramework.DataAccess.Queries.Students
                 .Where(e => e.StudentId == Id)
                 .OrderBy(e => e.Course.Title);
 
-            var pageSize = PageSize ?? DefaultPageSize;
-            if (pageSize < MinPageSize) pageSize = MinPageSize;
-            else if (pageSize > MaxPageSize) pageSize = MaxPageSize;
-
-            student.TotalCourses = enrollments.Count();
-            student.CurrentPage = Page.HasValue && Page > 1 ? Page.Value : 1;
-            student.PageSize = pageSize;
-
-            if (student.CurrentPage > 1)
-            {
-                var skip = (student.CurrentPage - 1) * pageSize;
-                enrollments = enrollments.Skip(skip);
-            }
-
-            enrollments = enrollments.Take(pageSize);
+            student.Pagination = PaginationModel.Create(enrollments.Count(), Page, PageSize);
+            if (student.Pagination.ShouldSkip)
+                enrollments = enrollments.Skip(student.Pagination.SkipAmount);
+            enrollments = enrollments.Take(student.Pagination.PageSize);
 
             student.Courses = enrollments
                 .Select(e => new CourseEnrollmentListModel

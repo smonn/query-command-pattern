@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using SampleEntityFramework.DomainModels.Common;
 using SampleEntityFramework.DomainModels.Courses;
 using SampleEntityFramework.PersistenceModels;
 
@@ -6,10 +7,6 @@ namespace SampleEntityFramework.DataAccess.Queries.Courses
 {
     public class CourseListQuery : IQuery<CoursesModel>
     {
-        public const int DefaultPageSize = 2;
-        private const int MinPageSize = 1;
-        private const int MaxPageSize = 100;
-
         public int? Page { get; set; }
         public int? PageSize { get; set; }
 
@@ -19,21 +16,11 @@ namespace SampleEntityFramework.DataAccess.Queries.Courses
 
             IQueryable<Course> courses = context.Courses.OrderBy(c => c.Title);
 
-            var pageSize = PageSize ?? DefaultPageSize;
-            if (pageSize < MinPageSize) pageSize = MinPageSize;
-            else if (pageSize > MaxPageSize) pageSize = MaxPageSize;
+            result.Pagination = PaginationModel.Create(courses.Count(), Page, PageSize);
+            if (result.Pagination.ShouldSkip)
+                courses = courses.Skip(result.Pagination.SkipAmount);
+            courses = courses.Take(result.Pagination.PageSize);
 
-            result.TotalCourses = courses.Count();
-            result.CurrentPage = Page.HasValue && Page > 1 ? Page.Value : 1;
-            result.PageSize = pageSize;
-
-            if (result.CurrentPage > 1)
-            {
-                var skip = (result.CurrentPage - 1) * pageSize;
-                courses = courses.Skip(skip);
-            }
-
-            courses = courses.Take(pageSize);
             result.Courses = courses.Select(
                 c => new CourseListModel
                 {

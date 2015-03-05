@@ -1,0 +1,48 @@
+﻿@using SampleEntityFramework.SchoolWeb.Models
+@model SampleEntityFramework.DomainModels.Students.StudentDetailsModel
+
+@{
+    ViewBag.Title = "Student - " + Model.LastName + ", " + Model.FirstName + " [" + Model.StudentId + "]";
+    var pagination = new PaginationViewModel
+    {
+        Action = "Detail",
+        Controller = "Student",
+        Data = Model.Pagination,
+    };
+}
+
+<h2>Student <small>@Model.LastName, @Model.FirstName [@Model.StudentId]</small></h2>
+<p>Enrollment Date: @Model.EnrollmentDate.ToShortDateString()</p>
+
+<section>
+    <header><h3>Courses</h3></header>
+
+    @if (Model.Courses.Any())
+    {
+        <table>
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Credits</th>
+                <th>Grade</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var course in Model.Courses)
+            {
+                <tr>
+                    <td><a href="@Url.Action("Detail", "Course", new {Id = course.CourseId})">@course.Title</a> [@course.CourseId]</td>
+                    <td>@course.Credits</td>
+                    <td>@course.Grade</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No courses registered for this student.</p>
+    }
+
+    @Html.Partial("_Pagination", pagination)
+</section>

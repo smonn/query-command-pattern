@@ -52,6 +52,7 @@
     <Compile Include="Queries\Courses\CourseDetailsQuery.cs" />
     <Compile Include="Queries\Courses\CourseListQuery.cs" />
     <Compile Include="Queries\Students\StudentDetailsQuery.cs" />
+    <Compile Include="Queries\Students\StudentListQuery.cs" />
     <Compile Include="SchoolContext.cs" />
     <Compile Include="SchoolInitializer.cs" />
   </ItemGroup>
@@ -64,8 +65,8 @@
       <Project>{451627e3-5ffe-4163-b791-42920c34d916}</Project>
       <Name>DomainModels</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Models\PersistenceModels.csproj">
-      <Project>{40F30BB4-24B8-4485-A977-4E82F1114466}</Project>
+    <ProjectReference Include="..\PersistenceModels\PersistenceModels.csproj">
+      <Project>{40f30bb4-24b8-4485-a977-4e82f1114466}</Project>
       <Name>PersistenceModels</Name>
     </ProjectReference>
   </ItemGroup>

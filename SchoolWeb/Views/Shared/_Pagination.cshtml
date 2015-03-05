@@ -1,0 +1,20 @@
+﻿@model SampleEntityFramework.SchoolWeb.Models.PaginationViewModel
+
+@if (Model.Data.TotalPages > 1)
+{
+    <nav class="pagination">
+        <ul>
+            @for (var i = 1; i <= Model.Data.TotalPages; i += 1)
+            {
+                if (i == Model.Data.Page)
+                {
+                    <li class="active"><span>@i</span></li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink(i.ToString(), Model.Action, Model.Controller, new { pageSize = Model.Data.PageSize, page = i, area = Model.Area }, null)</li>
+                }
+            }
+        </ul>
+    </nav>
+}

@@ -1,51 +1,8 @@
-﻿@using SampleEntityFramework.SchoolWeb.Controllers
-@model SampleEntityFramework.DomainModels.Courses.CoursesModel
-
+﻿
 @{
-    ViewBag.Title = "Courses";
-    var pageCount = (int) Math.Ceiling(
-        Model.TotalCourses/(float) Model.PageSize);
+    ViewBag.Title = "Home";
 }
 
 <section>
-    <header><h2>Courses</h2></header>
-
-    <table>
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Credits</th>
-            <th>Enrollments</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var course in Model.Courses)
-        {
-            <tr>
-                <td><a href="@Url.Action("Course", new {Id = course.CourseId})">@course.Title</a> [@course.CourseId]</td>
-                <td>@course.Credits</td>
-                <td>@course.EnrollmentCount</td>
-            </tr>
-        }
-        </tbody>
-    </table>
-
-    @if (pageCount > 1)
-    {
-        <nav class="pagination">
-            <ul>
-                @for (var i = 1; i <= pageCount; i += 1)
-                {
-                    if (i == Model.CurrentPage)
-                    {
-                        <li class="active"><span>@i</span></li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink(i.ToString(), "Index", new {pageSize = Model.PageSize, page = i})</li>
-                    }
-                }
-            </ul>
-        </nav>
-    }
+    <header><h2>Home</h2></header>
 </section>

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using SampleEntityFramework.DomainModels.Common;
 
-namespace SampleEntityFramework.DomainModels.Courses
+namespace SampleEntityFramework.DomainModels.Students
 {
-    public class CoursesModel
+    public class StudentsModel
     {
-        public IEnumerable<CourseListModel> Courses { get; set; }
+        public IEnumerable<StudentListModel> Students { get; set; }
 
         public PaginationModel Pagination { get; set; }
     }
