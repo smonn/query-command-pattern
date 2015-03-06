@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using SampleEntityFramework.Utilities;
 
-namespace SampleEntityFramework.PersistenceModels
+namespace SampleEntityFramework.DomainModels.Courses
 {
     public abstract class EnrollmentGrade : Enumeration
     {

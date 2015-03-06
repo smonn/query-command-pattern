@@ -16,13 +16,6 @@ namespace SampleEntityFramework.PersistenceModels
         [Required]
         public int GradeValue { get; set; }
 
-        [NotMapped]
-        public EnrollmentGrade Grade
-        {
-            get { return EnrollmentGrade.FromValue(GradeValue); }
-            set { GradeValue = value.Value; }
-        }
-
         public virtual Course Course { get; set; }
         public virtual Student Student { get; set; }
     }

@@ -22,73 +22,73 @@ namespace SampleEntityFramework.DataAccess
                 {
                     StudentId = 1,
                     CourseId = 1050,
-                    Grade = EnrollmentGrade.A
+                    GradeValue = 1,
                 },
                 new Enrollment
                 {
                     StudentId = 1,
                     CourseId = 4022,
-                    Grade = EnrollmentGrade.C
+                    GradeValue = 3,
                 },
                 new Enrollment
                 {
                     StudentId = 1,
                     CourseId = 4041,
-                    Grade = EnrollmentGrade.B
+                    GradeValue = 2,
                 },
                 new Enrollment
                 {
                     StudentId = 2,
                     CourseId = 1045,
-                    Grade = EnrollmentGrade.B
+                    GradeValue = 2,
                 },
                 new Enrollment
                 {
                     StudentId = 2,
                     CourseId = 3141,
-                    Grade = EnrollmentGrade.F
+                    GradeValue = 5,
                 },
                 new Enrollment
                 {
                     StudentId = 2,
                     CourseId = 2021,
-                    Grade = EnrollmentGrade.F
+                    GradeValue = 5,
                 },
                 new Enrollment
                 {
                     StudentId = 3,
                     CourseId = 1050,
-                    Grade = EnrollmentGrade.NotSet
+                    GradeValue = 0,
                 },
                 new Enrollment
                 {
                     StudentId = 4,
                     CourseId = 1050,
-                    Grade = EnrollmentGrade.NotSet
+                    GradeValue = 0,
                 },
                 new Enrollment
                 {
                     StudentId = 4,
                     CourseId = 4022,
-                    Grade = EnrollmentGrade.F
+                    GradeValue = 5,
                 },
                 new Enrollment
                 {
                     StudentId = 5,
                     CourseId = 4041,
-                    Grade = EnrollmentGrade.C
+                    GradeValue = 3,
                 },
                 new Enrollment
                 {
                     StudentId = 6,
                     CourseId = 1045,
-                    Grade = EnrollmentGrade.NotSet
+                    GradeValue = 0,
                 },
                 new Enrollment
                 {
                     StudentId = 7,
                     CourseId = 3141,
-                    Grade = EnrollmentGrade.A
+                    GradeValue = 1,
                 },
             };
 

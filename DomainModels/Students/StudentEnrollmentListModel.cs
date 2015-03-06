@@ -1,4 +1,4 @@
-﻿using SampleEntityFramework.PersistenceModels;
+﻿using SampleEntityFramework.DomainModels.Courses;
 
 namespace SampleEntityFramework.DomainModels.Students
 {
