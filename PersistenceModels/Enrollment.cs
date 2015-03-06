@@ -1,4 +1,7 @@
-﻿namespace SampleEntityFramework.PersistenceModels
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SampleEntityFramework.PersistenceModels
 {
     // todo turn into proper enumeration class
     public enum EnrollmentGrade
@@ -8,9 +11,15 @@
 
     public class Enrollment
     {
-        public int Id { get; set; }
+        [Key]
+        [Column(Order = 1)]
         public int CourseId { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
         public int StudentId { get; set; }
+
+        [Required]
         public EnrollmentGrade Grade { get; set; }
 
         public virtual Course Course { get; set; }

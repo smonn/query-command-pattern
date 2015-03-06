@@ -12,6 +12,7 @@
 }
 
 <h2>Student <small>@Model.LastName, @Model.FirstName [@Model.StudentId]</small></h2>
+<p>@Html.ActionLink("Edit Student", "Edit", new { id = Model.StudentId })</p>
 <p>Enrollment Date: @Model.EnrollmentDate.ToShortDateString()</p>
 
 <section>

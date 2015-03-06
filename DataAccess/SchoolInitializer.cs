@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using SampleEntityFramework.PersistenceModels;
 
 namespace SampleEntityFramework.DataAccess
@@ -16,7 +16,7 @@ namespace SampleEntityFramework.DataAccess
 
         private static void AddEnrollments(ISchoolContext context)
         {
-            var enrollments = new List<Enrollment>
+            var enrollments = new []
             {
                 new Enrollment
                 {
@@ -89,13 +89,13 @@ namespace SampleEntityFramework.DataAccess
                 },
             };
 
-            enrollments.ForEach(e => context.Enrollments.Add(e));
+            context.Enrollments.AddOrUpdate(enrollments);
             context.Commit();
         }
 
         private static void AddCourses(ISchoolContext context)
         {
-            var courses = new List<Course>
+            var courses = new []
             {
                 new Course
                 {
@@ -141,13 +141,13 @@ namespace SampleEntityFramework.DataAccess
                 }
             };
 
-            courses.ForEach(c => context.Courses.Add(c));
+            context.Courses.AddOrUpdate(courses);
             context.Commit();
         }
 
         private static void AddStudents(ISchoolContext context)
         {
-            var students = new List<Student>
+            var students = new []
             {
                 new Student
                 {
@@ -199,7 +199,7 @@ namespace SampleEntityFramework.DataAccess
                 },
             };
 
-            students.ForEach(s => context.Students.Add(s));
+            context.Students.AddOrUpdate(students);
             context.Commit();
         }
     }
