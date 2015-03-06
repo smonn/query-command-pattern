@@ -43,8 +43,9 @@ namespace SampleEntityFramework.DataAccess.Queries.Students
                     CourseId = e.CourseId,
                     Credits = e.Course.Credits,
                     Title = e.Course.Title,
-                    Grade = e.Grade,
-                });
+                    GradeValue = e.GradeValue,
+                })
+                .ToList();
 
             return student;
         }

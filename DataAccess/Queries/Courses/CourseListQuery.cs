@@ -28,7 +28,8 @@ namespace SampleEntityFramework.DataAccess.Queries.Courses
                     Credits = c.Credits,
                     EnrollmentCount = c.Enrollments.Count(),
                     Title = c.Title
-                });
+                })
+                .ToList();
 
             return result;
         }

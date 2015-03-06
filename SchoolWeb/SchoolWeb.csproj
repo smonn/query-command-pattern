@@ -162,6 +162,10 @@
       <Project>{451627e3-5ffe-4163-b791-42920c34d916}</Project>
       <Name>DomainModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{9d4e9c6c-17af-49f4-bda2-3cc5f7559bd8}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

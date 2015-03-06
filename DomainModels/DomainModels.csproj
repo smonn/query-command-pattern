@@ -55,6 +55,10 @@
       <Project>{40f30bb4-24b8-4485-a977-4e82f1114466}</Project>
       <Name>PersistenceModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{9d4e9c6c-17af-49f4-bda2-3cc5f7559bd8}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

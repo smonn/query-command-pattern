@@ -30,7 +30,8 @@ namespace SampleEntityFramework.DataAccess.Queries.Students
                     LastName = s.LastName,
                     StudentId = s.StudentId,
                     EnrollmentCount = s.Enrollments.Count(),
-                });
+                })
+                .ToList();
 
             return result;
         }

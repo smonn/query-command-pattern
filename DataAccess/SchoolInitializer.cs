@@ -57,12 +57,14 @@ namespace SampleEntityFramework.DataAccess
                 new Enrollment
                 {
                     StudentId = 3,
-                    CourseId = 1050
+                    CourseId = 1050,
+                    Grade = EnrollmentGrade.NotSet
                 },
                 new Enrollment
                 {
                     StudentId = 4,
                     CourseId = 1050,
+                    Grade = EnrollmentGrade.NotSet
                 },
                 new Enrollment
                 {
@@ -79,7 +81,8 @@ namespace SampleEntityFramework.DataAccess
                 new Enrollment
                 {
                     StudentId = 6,
-                    CourseId = 1045
+                    CourseId = 1045,
+                    Grade = EnrollmentGrade.NotSet
                 },
                 new Enrollment
                 {

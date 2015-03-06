@@ -41,10 +41,11 @@ namespace SampleEntityFramework.DataAccess.Queries.Courses
                 .Select(e => new StudentEnrollmentListModel
                 {
                     FirstName = e.Student.FirstName,
-                    Grade = e.Grade,
+                    GradeValue = e.GradeValue,
                     LastName = e.Student.LastName,
                     StudentId = e.StudentId,
-                });
+                })
+                .ToList();
 
             return course;
         }

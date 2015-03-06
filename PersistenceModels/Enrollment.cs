@@ -3,12 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SampleEntityFramework.PersistenceModels
 {
-    // todo turn into proper enumeration class
-    public enum EnrollmentGrade
-    {
-        X, F, D, C, B, A,
-    }
-
     public class Enrollment
     {
         [Key]
@@ -20,7 +14,14 @@ namespace SampleEntityFramework.PersistenceModels
         public int StudentId { get; set; }
 
         [Required]
-        public EnrollmentGrade Grade { get; set; }
+        public int GradeValue { get; set; }
+
+        [NotMapped]
+        public EnrollmentGrade Grade
+        {
+            get { return EnrollmentGrade.FromValue(GradeValue); }
+            set { GradeValue = value.Value; }
+        }
 
         public virtual Course Course { get; set; }
         public virtual Student Student { get; set; }

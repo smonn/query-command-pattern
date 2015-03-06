@@ -4,6 +4,12 @@ namespace SampleEntityFramework.DomainModels.Students
 {
     public class StudentEnrollmentListModel : StudentListModel
     {
-        public EnrollmentGrade Grade { get; set; }
+        public int GradeValue { get; set; }
+
+        public EnrollmentGrade Grade
+        {
+            get { return EnrollmentGrade.FromValue(GradeValue); }
+            set { GradeValue = value.Value; }
+        }
     }
 }
