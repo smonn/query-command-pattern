@@ -23,6 +23,7 @@
             <thead>
             <tr>
                 <th>Name</th>
+                <th>Enrollment Date</th>
                 <th>Courses</th>
             </tr>
             </thead>
@@ -33,6 +34,7 @@
                     <td>
                         <a href="@Url.Action("Detail", "Student", new {Id = student.StudentId})">@student.LastName, @student.FirstName</a> [@student.StudentId]
                     </td>
+                    <td>@student.EnrollmentDate.ToShortDateString()</td>
                     <td>@student.EnrollmentCount</td>
                 </tr>
             }

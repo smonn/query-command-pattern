@@ -50,7 +50,6 @@ namespace SampleEntityFramework.SchoolWeb.Controllers
         public ActionResult Update(EditStudentCommand command)
         {
             if (!ModelState.IsValid) return View("Edit", command);
-
             var studentId = command.Execute(_context);
             return RedirectToAction("Detail", new { id = studentId });
         }

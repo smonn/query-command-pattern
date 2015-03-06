@@ -7,8 +7,6 @@ namespace SampleEntityFramework.DomainModels.Students
 {
     public class StudentDetailsModel : StudentListModel
     {
-        public DateTime EnrollmentDate { get; set; }
-
         public IEnumerable<CourseEnrollmentListModel> Courses { get; set; }
 
         public PaginationModel Pagination { get; set; }

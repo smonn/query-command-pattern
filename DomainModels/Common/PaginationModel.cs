@@ -4,7 +4,7 @@ namespace SampleEntityFramework.DomainModels.Common
 {
     public class PaginationModel
     {
-        public const int DefaultPageSize = 3;
+        public const int DefaultPageSize = 10;
 
         public const int MinPageSize = 1;
         public const int MaxPageSize = 100;

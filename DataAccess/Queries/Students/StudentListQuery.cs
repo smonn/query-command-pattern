@@ -29,6 +29,7 @@ namespace SampleEntityFramework.DataAccess.Queries.Students
                     FirstName = s.FirstName,
                     LastName = s.LastName,
                     StudentId = s.StudentId,
+                    EnrollmentDate = s.EnrollmentDate,
                     EnrollmentCount = s.Enrollments.Count(),
                 })
                 .ToList();
