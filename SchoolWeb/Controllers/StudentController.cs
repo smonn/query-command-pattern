@@ -8,9 +8,9 @@ namespace SampleEntityFramework.SchoolWeb.Controllers
     {
         private readonly ISchoolContext _context;
 
-        public StudentController()
+        public StudentController(ISchoolContext context)
         {
-            _context = new SchoolContext();
+            _context = context;
         }
 
         [HttpGet]
