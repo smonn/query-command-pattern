@@ -36,6 +36,7 @@ namespace SampleEntityFramework.SchoolWeb.Controllers
         public ActionResult Edit(StudentDetailsQuery query)
         {
             var student = query.Execute(_context);
+            if (student == null) return ViewIfNotNull(null);
             var command = new EditStudentCommand
             {
                 EnrollmentDate = student.Details.EnrollmentDate,

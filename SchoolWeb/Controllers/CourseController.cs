@@ -1,7 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using SampleEntityFramework.DataAccess;
 using SampleEntityFramework.DataAccess.Commands.Courses;
 using SampleEntityFramework.DataAccess.Queries.Courses;
+using SampleEntityFramework.Utilities.Exceptions;
 
 namespace SampleEntityFramework.SchoolWeb.Controllers
 {
@@ -35,12 +37,14 @@ namespace SampleEntityFramework.SchoolWeb.Controllers
         [HttpGet]
         public ActionResult Edit(CourseDetailsQuery query)
         {
-            var student = query.Execute(_context);
+            var course = query.Execute(_context);
+            if (course == null) return ViewIfNotNull(null);
             var command = new EditCourseCommand
             {
-                CourseId = student.Details.CourseId,
-                Title = student.Details.Title,
-                Credits = student.Details.Credits,
+                CourseId = course.Details.CourseId,
+                Title = course.Details.Title,
+                Credits = course.Details.Credits,
+                CourseCode = course.Details.CourseCode,
             };
             return View(command);
         }
@@ -49,8 +53,16 @@ namespace SampleEntityFramework.SchoolWeb.Controllers
         public ActionResult Update(EditCourseCommand command)
         {
             if (!ModelState.IsValid) return View("Edit", command);
-            var studentId = command.Execute(_context);
-            return RedirectToAction("Detail", new { id = studentId });
+            try
+            {
+                var courseCode = command.Execute(_context);
+                return RedirectToAction("Detail", new {id = courseCode});
+            }
+            catch (CourseCodeException ex)
+            {
+                ModelState.AddModelError("CourseCode", ex.Message);
+                return View("Edit", command);
+            }
         }
     }
 }

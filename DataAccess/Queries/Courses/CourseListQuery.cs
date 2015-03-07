@@ -15,6 +15,7 @@ namespace SampleEntityFramework.DataAccess.Queries.Courses
                 .Select(c => new CourseListModel
                 {
                     CourseId = c.CourseId,
+                    CourseCode = c.CourseCode,
                     Credits = c.Credits,
                     EnrollmentCount = c.Enrollments.Count,
                     Title = c.Title

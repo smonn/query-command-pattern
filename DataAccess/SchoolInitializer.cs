@@ -21,73 +21,73 @@ namespace SampleEntityFramework.DataAccess
                 new Enrollment
                 {
                     StudentId = 1,
-                    CourseId = 1050,
+                    CourseId = 1,
                     GradeValue = 1,
                 },
                 new Enrollment
                 {
                     StudentId = 1,
-                    CourseId = 4022,
+                    CourseId = 2,
                     GradeValue = 3,
                 },
                 new Enrollment
                 {
                     StudentId = 1,
-                    CourseId = 4041,
+                    CourseId = 3,
                     GradeValue = 2,
                 },
                 new Enrollment
                 {
                     StudentId = 2,
-                    CourseId = 1045,
+                    CourseId = 4,
                     GradeValue = 2,
                 },
                 new Enrollment
                 {
                     StudentId = 2,
-                    CourseId = 3141,
+                    CourseId = 5,
                     GradeValue = 5,
                 },
                 new Enrollment
                 {
                     StudentId = 2,
-                    CourseId = 2021,
+                    CourseId = 6,
                     GradeValue = 5,
                 },
                 new Enrollment
                 {
                     StudentId = 3,
-                    CourseId = 1050,
+                    CourseId = 1,
                     GradeValue = 0,
                 },
                 new Enrollment
                 {
                     StudentId = 4,
-                    CourseId = 1050,
+                    CourseId = 1,
                     GradeValue = 0,
                 },
                 new Enrollment
                 {
                     StudentId = 4,
-                    CourseId = 4022,
+                    CourseId = 2,
                     GradeValue = 5,
                 },
                 new Enrollment
                 {
                     StudentId = 5,
-                    CourseId = 4041,
+                    CourseId = 3,
                     GradeValue = 3,
                 },
                 new Enrollment
                 {
                     StudentId = 6,
-                    CourseId = 1045,
+                    CourseId = 4,
                     GradeValue = 0,
                 },
                 new Enrollment
                 {
                     StudentId = 7,
-                    CourseId = 3141,
+                    CourseId = 5,
                     GradeValue = 1,
                 },
             };
@@ -102,43 +102,43 @@ namespace SampleEntityFramework.DataAccess
             {
                 new Course
                 {
-                    CourseId = 1050,
+                    CourseCode = 1050,
                     Title = "Chemistry",
                     Credits = 3,
                 },
                 new Course
                 {
-                    CourseId = 4022,
+                    CourseCode = 4022,
                     Title = "Microeconomics",
                     Credits = 3,
                 },
                 new Course
                 {
-                    CourseId = 4041,
+                    CourseCode = 4041,
                     Title = "Macroeconomics",
                     Credits = 3,
                 },
                 new Course
                 {
-                    CourseId = 1045,
+                    CourseCode = 1045,
                     Title = "Calculus",
                     Credits = 4,
                 },
                 new Course
                 {
-                    CourseId = 3141,
+                    CourseCode = 3141,
                     Title = "Trigonometry",
                     Credits = 4,
                 },
                 new Course
                 {
-                    CourseId = 2021,
+                    CourseCode = 2021,
                     Title = "Composition",
                     Credits = 3,
                 },
                 new Course
                 {
-                    CourseId = 2042,
+                    CourseCode = 2042,
                     Title = "Literature",
                     Credits = 4,
                 }

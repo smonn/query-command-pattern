@@ -3,10 +3,10 @@
 @model SampleEntityFramework.DomainModels.Students.StudentDetailsModel
 
 @{
-    ViewBag.Title = "Student - " + Model.Details.LastName + ", " + Model.Details.FirstName + " [" + Model.Details.StudentId + "]";
+    ViewBag.Title = "Student - " + Model.Details.LastName + ", " + Model.Details.FirstName;
 }
 
-<h2>Student <small>@Model.Details.LastName, @Model.Details.FirstName [@Model.Details.StudentId]</small></h2>
+<h2>Student <small>@Model.Details.LastName, @Model.Details.FirstName</small></h2>
 <p>@Html.ActionLink("Edit Student", "Edit", new { id = Model.Details.StudentId })</p>
 <p>Enrollment Date: @Model.Details.EnrollmentDate.ToShortDateString()</p>
 
@@ -19,6 +19,7 @@
             <thead>
                 <tr>
                     <th>Title</th>
+                    <th>Course Code</th>
                     <th>Credits</th>
                     <th>Grade</th>
                 </tr>
@@ -27,7 +28,8 @@
                 @foreach (var course in Model.Data)
                 {
                     <tr>
-                        <td><a href="@Url.Action("Detail", "Course", new {Id = course.CourseId})">@course.Title</a> [@course.CourseId]</td>
+                        <td><a href="@Url.Action("Detail", "Course", new {Id = course.CourseCode})">@course.Title</a></td>
+                        <td>@course.CourseCode</td>
                         <td>@course.Credits</td>
                         <td>@course.Grade</td>
                     </tr>

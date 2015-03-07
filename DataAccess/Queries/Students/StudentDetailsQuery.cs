@@ -35,6 +35,7 @@ namespace SampleEntityFramework.DataAccess.Queries.Students
                 .Select(e => new CourseEnrollmentListModel
                 {
                     CourseId = e.CourseId,
+                    CourseCode = e.Course.CourseCode,
                     Credits = e.Course.Credits,
                     Title = e.Course.Title,
                     GradeValue = e.GradeValue,

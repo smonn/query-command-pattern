@@ -3,11 +3,11 @@
 @model SampleEntityFramework.DomainModels.Courses.CourseDetailsModel
 
 @{
-    ViewBag.Title = "Course - " + Model.Details.Title + " [" + Model.Details.CourseId + "]";
+    ViewBag.Title = "Course - " + Model.Details.Title + " [" + Model.Details.CourseCode + "]";
 }
 
-<h2>Course <small>@Model.Details.Title [@Model.Details.CourseId]</small></h2>
-<p>@Html.ActionLink("Edit Course", "Edit", new { id = Model.Details.CourseId })</p>
+<h2>Course <small>@Model.Details.Title [@Model.Details.CourseCode]</small></h2>
+<p>@Html.ActionLink("Edit Course", "Edit", new { id = Model.Details.CourseCode })</p>
 <p>Credits: @Model.Details.Credits</p>
 
 <section>
@@ -19,6 +19,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Enrollment Date</th>
                     <th>Grade</th>
                 </tr>
             </thead>
@@ -27,8 +28,9 @@
                 {
                     <tr>
                         <td>
-                            <a href="@Url.Action("Detail", "Student", new {Id = student.StudentId})">@student.LastName, @student.FirstName</a> [@student.StudentId]
+                            <a href="@Url.Action("Detail", "Student", new {Id = student.StudentId})">@student.LastName, @student.FirstName</a>
                         </td>
+                        <td>@student.EnrollmentDate.ToShortDateString()</td>
                         <td>@student.Grade</td>
                     </tr>
                 }

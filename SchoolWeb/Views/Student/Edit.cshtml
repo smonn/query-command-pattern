@@ -4,7 +4,7 @@
     var isCreating = Model.StudentId == 0;
     ViewBag.Title = isCreating
         ? "Register Student"
-        : "Editing Student - " + Model.LastName + ", " + Model.FirstName + " [" + Model.StudentId + "]";
+        : "Editing Student - " + Model.LastName + ", " + Model.FirstName;
 }
 
 @if (isCreating)
@@ -13,7 +13,7 @@
 }
 else
 {
-    <h2>Editing Student <small>@Model.LastName, @Model.FirstName [@Model.StudentId]</small></h2>
+    <h2>Editing Student <small>@Model.LastName, @Model.FirstName</small></h2>
 }
 
 @using (Html.BeginForm("Update", "Student", FormMethod.Post))
@@ -33,7 +33,7 @@ else
     </div>
     <div class="form-field">
         @Html.LabelFor(s => s.EnrollmentDate)
-        @Html.TextBoxFor(s => s.EnrollmentDate)
+        @Html.TextBoxFor(s => s.EnrollmentDate, new { Value = Model.EnrollmentDate.ToShortDateString() })
         @Html.ValidationMessageFor(s => s.EnrollmentDate)
     </div>
     <div class="form-actions">
