@@ -1,16 +1,9 @@
-﻿@using SampleEntityFramework.DomainModels.Courses
-@using SampleEntityFramework.SchoolWeb.Models
+﻿@using SampleEntityFramework.SchoolWeb.Extensions
 
 @model SampleEntityFramework.DomainModels.Students.StudentDetailsModel
 
 @{
     ViewBag.Title = "Student - " + Model.Details.LastName + ", " + Model.Details.FirstName + " [" + Model.Details.StudentId + "]";
-    var pagination = new PaginationViewModel<CourseEnrollmentListModel>
-    {
-        Action = "Detail",
-        Controller = "Student",
-        Data = Model,
-    };
 }
 
 <h2>Student <small>@Model.Details.LastName, @Model.Details.FirstName [@Model.Details.StudentId]</small></h2>
@@ -47,5 +40,6 @@
         <p>No courses registered for this student.</p>
     }
 
-    @Html.Partial("_Pagination", pagination)
+    @Html.Pagination(Model, "Detail", "Student")
+
 </section>

@@ -1,16 +1,10 @@
 ﻿@using SampleEntityFramework.DomainModels.Students
-@using SampleEntityFramework.SchoolWeb.Models
+@using SampleEntityFramework.SchoolWeb.Extensions
 
 @model StudentsModel
 
 @{
     ViewBag.Title = "Students";
-    var pagination = new PaginationViewModel<StudentListModel>
-    {
-        Action = "Index",
-        Controller = "Student",
-        Data = Model,
-    };
 }
 
 <section>
@@ -48,5 +42,6 @@
         <p>No students registered.</p>
     }
 
-    @Html.Partial("_Pagination", pagination)
+    @Html.Pagination(Model, "Index", "Student")
+
 </section>
