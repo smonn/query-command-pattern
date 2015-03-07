@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using SampleEntityFramework.DomainModels.Common;
 
 namespace SampleEntityFramework.DomainModels.Students
 {
-    public class StudentsModel
+    public class StudentsModel : PaginatedModel<StudentListModel>
     {
-        public IEnumerable<StudentListModel> Students { get; set; }
-
-        public PaginationModel Pagination { get; set; }
+        public StudentsModel(IQueryable<StudentListModel> data, int? page, int? pageSize) : base(data, page, pageSize) { }
     }
 }

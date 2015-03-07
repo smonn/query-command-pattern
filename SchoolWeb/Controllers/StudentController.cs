@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 using SampleEntityFramework.DataAccess;
-using SampleEntityFramework.DataAccess.Commands;
+using SampleEntityFramework.DataAccess.Commands.Students;
 using SampleEntityFramework.DataAccess.Queries.Students;
 
 namespace SampleEntityFramework.SchoolWeb.Controllers
@@ -35,13 +35,13 @@ namespace SampleEntityFramework.SchoolWeb.Controllers
         [HttpGet]
         public ActionResult Edit(StudentDetailsQuery query)
         {
-            var details = query.Execute(_context);
+            var student = query.Execute(_context);
             var command = new EditStudentCommand
             {
-                EnrollmentDate = details.EnrollmentDate,
-                FirstName = details.FirstName,
-                LastName = details.LastName,
-                StudentId = details.StudentId,
+                EnrollmentDate = student.Details.EnrollmentDate,
+                FirstName = student.Details.FirstName,
+                LastName = student.Details.LastName,
+                StudentId = student.Details.StudentId,
             };
             return View(command);
         }

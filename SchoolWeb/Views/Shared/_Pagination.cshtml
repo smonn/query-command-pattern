@@ -1,6 +1,4 @@
-﻿@model SampleEntityFramework.SchoolWeb.Models.PaginationViewModel
-
-@if (Model.Data.TotalPages > 1)
+﻿@if (Model.Data.TotalPages > 1)
 {
     <nav class="pagination">
         <ul>
@@ -12,7 +10,10 @@
                 }
                 else
                 {
-                    <li>@Html.ActionLink(i.ToString(), Model.Action, Model.Controller, new { pageSize = Model.Data.PageSize, page = i, area = Model.Area }, null)</li>
+                    var url = Url.Action(Model.Action, Model.Controller, new { pageSize = Model.Data.PageSize, page = i, area = Model.Area });
+                    var label = i.ToString();
+
+                    <li><a href="@url">@label</a></li>
                 }
             }
         </ul>

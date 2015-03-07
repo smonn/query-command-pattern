@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using SampleEntityFramework.DomainModels.Common;
 using SampleEntityFramework.DomainModels.Students;
 
 namespace SampleEntityFramework.DomainModels.Courses
 {
-    public class CourseDetailsModel : CourseListModel
+    public class CourseDetailsModel : PaginatedModel<StudentEnrollmentListModel>
     {
-        public IEnumerable<StudentEnrollmentListModel> Students { get; set; }
+        public CourseListModel Details { get; set; }
 
-        public PaginationModel Pagination { get; set; }
+        public CourseDetailsModel AddEnrollments(IQueryable<StudentEnrollmentListModel> enrollments, int? page, int? pageSize)
+        {
+            ApplyPaging(enrollments, page, pageSize);
+            return this;
+        }
     }
 }

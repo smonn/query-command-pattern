@@ -1,8 +1,6 @@
 ﻿using System.Linq;
-using SampleEntityFramework.DomainModels.Common;
 using SampleEntityFramework.DomainModels.Courses;
 using SampleEntityFramework.DomainModels.Students;
-using SampleEntityFramework.PersistenceModels;
 
 namespace SampleEntityFramework.DataAccess.Queries.Students
 {
@@ -19,35 +17,30 @@ namespace SampleEntityFramework.DataAccess.Queries.Students
                 .Where(s => s.StudentId == Id)
                 .Select(s => new StudentDetailsModel
                 {
-                    EnrollmentDate = s.EnrollmentDate,
-                    FirstName = s.FirstName,
-                    LastName = s.LastName,
-                    StudentId = s.StudentId,
+                    Details = new StudentListModel
+                    {
+                        EnrollmentDate = s.EnrollmentDate,
+                        FirstName = s.FirstName,
+                        LastName = s.LastName,
+                        StudentId = s.StudentId,
+                    }
                 })
                 .FirstOrDefault();
 
             if (student == null) return null;
 
-            IQueryable<Enrollment> enrollments = context.Enrollments
+            var enrollments = context.Enrollments
                 .Where(e => e.StudentId == Id)
-                .OrderBy(e => e.Course.Title);
-
-            student.Pagination = PaginationModel.Create(enrollments.Count(), Page, PageSize);
-            if (student.Pagination.ShouldSkip)
-                enrollments = enrollments.Skip(student.Pagination.SkipAmount);
-            enrollments = enrollments.Take(student.Pagination.PageSize);
-
-            student.Courses = enrollments
+                .OrderBy(e => e.Course.Title)
                 .Select(e => new CourseEnrollmentListModel
                 {
                     CourseId = e.CourseId,
                     Credits = e.Course.Credits,
                     Title = e.Course.Title,
                     GradeValue = e.GradeValue,
-                })
-                .ToList();
+                });
 
-            return student;
+            return student.AddEnrollments(enrollments, Page, PageSize);
         }
     }
 }

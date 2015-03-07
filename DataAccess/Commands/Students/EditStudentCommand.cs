@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
-namespace SampleEntityFramework.DataAccess.Commands
+namespace SampleEntityFramework.DataAccess.Commands.Students
 {
     public class EditStudentCommand : ICommand<int>
     {

@@ -2,9 +2,9 @@
 
 namespace SampleEntityFramework.SchoolWeb.Models
 {
-    public class PaginationViewModel
+    public class PaginationViewModel<TModel>
     {
-        public PaginationModel Data { get; set; }
+        public PaginatedModel<TModel> Data { get; set; }
         public string Action { get; set; }
         public string Controller { get; set; }
         public string Area { get; set; }

@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\EditStudentCommand.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="IQuery.cs" />
+    <Compile Include="Commands\Students\EditStudentCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Queries\IQuery.cs" />
     <Compile Include="ISchoolContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\Courses\CourseDetailsQuery.cs" />

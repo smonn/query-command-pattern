@@ -1,7 +1,5 @@
 ﻿using System.Linq;
-using SampleEntityFramework.DomainModels.Common;
 using SampleEntityFramework.DomainModels.Students;
-using SampleEntityFramework.PersistenceModels;
 
 namespace SampleEntityFramework.DataAccess.Queries.Students
 {
@@ -12,29 +10,19 @@ namespace SampleEntityFramework.DataAccess.Queries.Students
 
         public StudentsModel Execute(ISchoolContext context)
         {
-            var result = new StudentsModel();
-
-            IQueryable<Student> students = context.Students
+            var students = context.Students
                 .OrderBy(c => c.LastName)
-                .ThenBy(c => c.FirstName);
-
-            result.Pagination = PaginationModel.Create(students.Count(), Page, PageSize);
-            if (result.Pagination.ShouldSkip)
-                students = students.Skip(result.Pagination.SkipAmount);
-            students = students.Take(result.Pagination.PageSize);
-
-            result.Students = students.Select(
-                s => new StudentListModel
+                .ThenBy(c => c.FirstName)
+                .Select(s => new StudentListModel
                 {
                     FirstName = s.FirstName,
                     LastName = s.LastName,
                     StudentId = s.StudentId,
                     EnrollmentDate = s.EnrollmentDate,
-                    EnrollmentCount = s.Enrollments.Count(),
-                })
-                .ToList();
+                    EnrollmentCount = s.Enrollments.Count,
+                });
 
-            return result;
+            return new StudentsModel(students, Page, PageSize);
         }
     }
 }

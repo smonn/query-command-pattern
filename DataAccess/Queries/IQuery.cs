@@ -1,4 +1,4 @@
-namespace SampleEntityFramework.DataAccess
+namespace SampleEntityFramework.DataAccess.Queries
 {
     public interface IQuery<out TModel>
     {

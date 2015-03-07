@@ -1,38 +1,40 @@
-﻿@using SampleEntityFramework.SchoolWeb.Models
-@model SampleEntityFramework.DomainModels.Courses.CoursesModel
+﻿@using SampleEntityFramework.DomainModels.Courses
+@using SampleEntityFramework.SchoolWeb.Models
+
+@model CoursesModel
 
 @{
     ViewBag.Title = "Courses";
-    var pagination = new PaginationViewModel
+    var pagination = new PaginationViewModel<CourseListModel>
     {
         Action = "Index",
         Controller = "Course",
-        Data = Model.Pagination,
+        Data = Model,
     };
 }
 
 <section>
     <header><h2>Courses</h2></header>
 
-    @if (Model.Courses.Any())
+    @if (Model.Data.Any())
     {
         <table>
             <thead>
-            <tr>
-                <th>Title</th>
-                <th>Credits</th>
-                <th>Students</th>
-            </tr>
+                <tr>
+                    <th>Title</th>
+                    <th>Credits</th>
+                    <th>Students</th>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var course in Model.Courses)
-            {
-                <tr>
-                    <td><a href="@Url.Action("Detail", new {Id = course.CourseId})">@course.Title</a> [@course.CourseId]</td>
-                    <td>@course.Credits</td>
-                    <td>@course.EnrollmentCount</td>
-                </tr>
-            }
+                @foreach (var course in Model.Data)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Detail", new {Id = course.CourseId})">@course.Title</a> [@course.CourseId]</td>
+                        <td>@course.Credits</td>
+                        <td>@course.EnrollmentCount</td>
+                    </tr>
+                }
             </tbody>
         </table>
     }

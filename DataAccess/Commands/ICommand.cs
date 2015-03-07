@@ -1,4 +1,4 @@
-﻿namespace SampleEntityFramework.DataAccess
+﻿namespace SampleEntityFramework.DataAccess.Commands
 {
     public interface ICommand<out TModel>
     {

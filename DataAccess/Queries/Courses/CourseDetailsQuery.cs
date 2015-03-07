@@ -1,8 +1,6 @@
 ﻿using System.Linq;
-using SampleEntityFramework.DomainModels.Common;
 using SampleEntityFramework.DomainModels.Courses;
 using SampleEntityFramework.DomainModels.Students;
-using SampleEntityFramework.PersistenceModels;
 
 namespace SampleEntityFramework.DataAccess.Queries.Courses
 {
@@ -19,35 +17,31 @@ namespace SampleEntityFramework.DataAccess.Queries.Courses
                 .Where(c => c.CourseId == Id)
                 .Select(c => new CourseDetailsModel
                 {
-                    CourseId = c.CourseId,
-                    Credits = c.Credits,
-                    Title = c.Title,
+                    Details = new CourseListModel
+                    {
+                        EnrollmentCount = c.Enrollments.Count,
+                        CourseId = c.CourseId,
+                        Credits = c.Credits,
+                        Title = c.Title,
+                    }
                 })
                 .FirstOrDefault();
 
             if (course == null) return null;
 
-            IQueryable<Enrollment> enrollments = context.Enrollments
+            var enrollments = context.Enrollments
                 .Where(e => e.CourseId == Id)
                 .OrderBy(e => e.Student.LastName)
-                .ThenBy(e => e.Student.FirstName);
-
-            course.Pagination = PaginationModel.Create(enrollments.Count(), Page, PageSize);
-            if (course.Pagination.ShouldSkip)
-                enrollments = enrollments.Skip(course.Pagination.SkipAmount);
-            enrollments = enrollments.Take(course.Pagination.PageSize);
-
-            course.Students = enrollments
+                .ThenBy(e => e.Student.FirstName)
                 .Select(e => new StudentEnrollmentListModel
                 {
                     FirstName = e.Student.FirstName,
                     GradeValue = e.GradeValue,
                     LastName = e.Student.LastName,
                     StudentId = e.StudentId,
-                })
-                .ToList();
+                });
 
-            return course;
+            return course.AddEnrollments(enrollments, Page, PageSize);
         }
     }
 }

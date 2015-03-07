@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\PaginationModel.cs" />
+    <Compile Include="Common\PaginatedModel.cs" />
     <Compile Include="Courses\CourseDetailsModel.cs" />
     <Compile Include="Courses\CourseEnrollmentListModel.cs" />
     <Compile Include="Courses\CourseListModel.cs" />
