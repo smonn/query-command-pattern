@@ -6,6 +6,8 @@ namespace SampleEntityFramework.PersistenceModels
 {
     public class Course
     {
+        // todo disable manual setting of this id
+        // todo introduce another field that takes care of this (e.g. CourseCode)
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CourseId { get; set; }
 

@@ -1,0 +1,52 @@
+﻿@model SampleEntityFramework.DataAccess.Commands.Courses.EditCourseCommand
+
+@{
+    var isCreating = Model.CourseId == 0;
+    ViewBag.Title = isCreating
+        ? "Register Course"
+        : "Editing Course - " + Model.Title + " [" + Model.CourseId + "]";
+}
+
+@if (isCreating)
+{
+    <h2>Register Course</h2>
+}
+else
+{
+    <h2>Editing Course <small>@Model.Title [@Model.CourseId]</small></h2>
+}
+
+@using (Html.BeginForm("Update", "Course", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    if (isCreating)
+    {
+        <div class="form-field">
+            @Html.LabelFor(s => s.CourseId)
+            @Html.TextBoxFor(s => s.CourseId)
+            @Html.ValidationMessageFor(s => s.CourseId)
+        </div>
+    }
+    else
+    {
+        @Html.HiddenFor(s => s.CourseId)
+    }
+
+    <div class="form-field">
+        @Html.LabelFor(s => s.Title)
+        @Html.TextBoxFor(s => s.Title)
+        @Html.ValidationMessageFor(s => s.Title)
+    </div>
+    <div class="form-field">
+        @Html.LabelFor(s => s.Credits)
+        @Html.TextBoxFor(s => s.Credits)
+        @Html.ValidationMessageFor(s => s.Credits)
+    </div>
+    <div class="form-actions">
+        <button type="submit">@(isCreating ? "Register" : "Update")</button>
+        @(isCreating
+            ? Html.ActionLink("Cancel", "Index")
+            : Html.ActionLink("Cancel", "Detail", new { id = Model.CourseId }))
+    </div>
+}

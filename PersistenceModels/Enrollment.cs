@@ -6,11 +6,12 @@ namespace SampleEntityFramework.PersistenceModels
     public class Enrollment
     {
         [Key]
-        [Column(Order = 1)]
+        public int EnrollmentId { get; set; }
+
+        [Index]
         public int CourseId { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
+        [Index]
         public int StudentId { get; set; }
 
         [Required]

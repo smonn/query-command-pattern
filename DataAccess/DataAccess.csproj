@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Courses\EditCourseCommand.cs" />
     <Compile Include="Commands\Students\EditStudentCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Queries\IQuery.cs" />

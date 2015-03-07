@@ -7,6 +7,7 @@
 }
 
 <h2>Course <small>@Model.Details.Title [@Model.Details.CourseId]</small></h2>
+<p>@Html.ActionLink("Edit Course", "Edit", new { id = Model.Details.CourseId })</p>
 <p>Credits: @Model.Details.Credits</p>
 
 <section>
