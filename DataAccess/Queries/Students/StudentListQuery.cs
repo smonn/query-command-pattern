@@ -11,8 +11,9 @@ namespace SampleEntityFramework.DataAccess.Queries.Students
         public StudentsModel Execute(ISchoolContext context)
         {
             var students = context.Students
-                .OrderBy(c => c.LastName)
-                .ThenBy(c => c.FirstName)
+                .OrderByDescending(s => s.EnrollmentDate)
+                .ThenBy(s => s.LastName)
+                .ThenBy(s => s.FirstName)
                 .Select(s => new StudentListModel
                 {
                     FirstName = s.FirstName,

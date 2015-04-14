@@ -1,4 +1,6 @@
-﻿@if (Model.Data.TotalPages > 1)
+﻿@using SampleEntityFramework.DomainModels.Common
+
+@if (Model.Data.TotalPages > 1)
 {
     <nav class="pagination">
         <ul>
@@ -10,7 +12,22 @@
                 }
                 else
                 {
-                    var url = Url.Action(Model.Action, Model.Controller, new { pageSize = Model.Data.PageSize, page = i, area = Model.Area });
+                    var routeValues = new RouteValueDictionary
+                    {
+                        {"area", Model.Area},
+                    };
+
+                    if (i > 1)
+                    {
+                        routeValues.Add("page", i);
+                    }
+
+                    if (Model.Data.PageSize != PaginatedModel<object>.DefaultPageSize)
+                    {
+                        routeValues.Add("pageSize", Model.Data.PageSize);
+                    }
+
+                    var url = Url.Action(Model.Action, Model.Controller, routeValues);
                     var label = i.ToString();
 
                     <li><a href="@url">@label</a></li>

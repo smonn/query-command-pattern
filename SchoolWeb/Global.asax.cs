@@ -10,7 +10,7 @@ namespace SampleEntityFramework.SchoolWeb
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            DependecyInjectionConfig.Configure();
+            DependencyInjectionConfig.Configure();
         }
     }
 }

@@ -6,7 +6,7 @@ using SimpleInjector.Integration.Web.Mvc;
 
 namespace SampleEntityFramework.SchoolWeb
 {
-    public static class DependecyInjectionConfig
+    public static class DependencyInjectionConfig
     {
         public static void Configure()
         {
